@@ -1,113 +1,73 @@
-// Store all image names
+// Get image URLs directly from the gallery
+let galleryImages = Array.from(
+    document.querySelectorAll(".image-box img")
+);
 
-let images = [
-    "images/image1.jpg",
-    "images/image2.jpg",
-    "images/image3.jpg",
-    "images/image4.jpg",
-    "images/image5.jpg",
-    "images/image6.jpg",
-    "images/image7.jpg",
-    "images/image8.jpg",
-    "images/image9.jpg"
-];
-
-
-// Current image number
+let images = galleryImages.map(img => img.src);
 
 let currentImage = 0;
 
-
-// Open lightbox
-
+// Open large image
 function openLightbox(index) {
-
     currentImage = index;
 
-    document.getElementById("lightbox").style.display = "flex";
+    let lightbox = document.getElementById("lightbox");
+    let lightboxImage = document.getElementById("lightboxImage");
 
-    document.getElementById("lightboxImage").src =
-        images[currentImage];
+    // Use the exact URL of the gallery image
+    lightboxImage.src = galleryImages[index].src;
+
+    lightbox.style.display = "flex";
 }
 
-
-// Close lightbox
-
+// Close large image
 function closeLightbox() {
-
     document.getElementById("lightbox").style.display = "none";
 }
 
-
-// Next image
-
+// Show next image
 function nextImage() {
-
     currentImage++;
 
-    if (currentImage >= images.length) {
+    if (currentImage >= galleryImages.length) {
         currentImage = 0;
     }
 
     document.getElementById("lightboxImage").src =
-        images[currentImage];
+        galleryImages[currentImage].src;
 }
 
-
-// Previous image
-
+// Show previous image
 function previousImage() {
-
     currentImage--;
 
     if (currentImage < 0) {
-        currentImage = images.length - 1;
+        currentImage = galleryImages.length - 1;
     }
 
     document.getElementById("lightboxImage").src =
-        images[currentImage];
+        galleryImages[currentImage].src;
 }
 
-
-// Filter images
-
+// Filter gallery images
 function filterImages(category) {
-
-    let imageBoxes =
-        document.querySelectorAll(".image-box");
-
+    let imageBoxes = document.querySelectorAll(".image-box");
 
     imageBoxes.forEach(function(box) {
-
-        if (category === "all") {
-
+        if (
+            category === "all" ||
+            box.classList.contains(category)
+        ) {
             box.style.display = "block";
-
-        }
-
-        else if (box.classList.contains(category)) {
-
-            box.style.display = "block";
-
-        }
-
-        else {
-
+        } else {
             box.style.display = "none";
-
         }
-
     });
 }
 
-
-// Close lightbox when clicking outside image
-
-document.getElementById("lightbox").onclick =
-    function(event) {
-
-        if (event.target === this) {
-            closeLightbox();
-        }
-
-    };
+// Close when clicking outside the large image
+document.getElementById("lightbox").onclick = function(event) {
+    if (event.target === this) {
+        closeLightbox();
+    }
+};
