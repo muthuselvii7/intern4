@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Image Gallery</title>
+
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+
+    <h1>My Image Gallery</h1>
+
+    <!-- Category Buttons -->
+    <div class="filters">
+        <button onclick="filterImages('all')">All</button>
+        <button onclick="filterImages('nature')">Nature</button>
+        <button onclick="filterImages('animal')">Animals</button>
+        <button onclick="filterImages('city')">City</button>
+    </div>
+
+
+    <!-- Image Gallery -->
+    <div class="gallery">
+
+        <div class="image-box nature">
+            <img src="image1.jpg"
+                 onclick="openLightbox(0)"
+                 alt="Nature">
+        </div>
+
+        <div class="image-box animal">
+            <img src="image2.jpg"
+                 onclick="openLightbox(1)"
+                 alt="Animal">
+        </div>
+
+        <div class="image-box city">
+            <img src="image3.jpg"
+                 onclick="openLightbox(2)"
+                 alt="City">
+        </div>
+
+        <div class="image-box nature">
+            <img src="image4.jpg"
+                 onclick="openLightbox(3)"
+                 alt="Nature">
+        </div>
+
+        <div class="image-box animal">
+            <img src="image5.jpg"
+                 onclick="openLightbox(4)"
+                 alt="Animal">
+        </div>
+
+        <div class="image-box city">
+            <img src="image6.jpg"
+                 onclick="openLightbox(5)"
+                 alt="City">
+        </div>
+         <div class="image-box nature">
+            <img src="image7.jpg"
+                 onclick="openLightbox(6)"
+                 alt="Nature">
+        </div>
+
+        <div class="image-box animal">
+            <img src="image8.jpg"
+                 onclick="openLightbox(7)"
+                 alt="Animal">
+        </div>
+
+        <div class="image-box city">
+            <img src="image9.jpg"
+                 onclick="openLightbox(8)"
+                 alt="City">
+        </div>
+
+    </div>
+
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+
+        <span class="close" onclick="closeLightbox()">
+            &times;
+        </span>
+
+        <button class="prev" onclick="previousImage()">
+            &#10094;
+        </button>
+
+        <img id="lightboxImage" src="" alt="Large Image">
+
+        <button class="next" onclick="nextImage()">
+            &#10095;
+        </button>
+
+    </div>
+
+
+    <script src="script1.js"></script>
+
+</body>
+</html>
